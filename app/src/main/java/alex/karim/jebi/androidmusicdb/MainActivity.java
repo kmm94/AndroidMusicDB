@@ -4,7 +4,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+
+import com.arlib.floatingsearchview.FloatingSearchView;
 
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 
@@ -13,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
 
     ViewPager viewPager;
     PageAdapter pageAdapter;
+    FloatingSearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,18 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+/*
+        mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
+            @Override
+            public void onSearchTextChanged(String oldQuery, final String newQuery) {
+
+                //get suggestions based on newQuery
+
+                //pass them on to the search view
+
+            }
+        });
+        */
     }
 
     @Override
