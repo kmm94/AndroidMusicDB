@@ -1,4 +1,4 @@
-package alex.karim.jebi.androidmusicdb;
+package alex.karim.jebi.androidmusicdb.dummy;
 
 import android.os.Parcel;
 
