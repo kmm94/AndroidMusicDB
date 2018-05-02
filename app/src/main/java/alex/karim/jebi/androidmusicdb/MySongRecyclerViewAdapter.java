@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import alex.karim.jebi.androidmusicdb.SongFragment2.OnListFragmentInteractionListener;
+import alex.karim.jebi.androidmusicdb.SongFragment.OnListFragmentInteractionListener;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
 
 import java.util.List;

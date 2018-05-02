@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 
 
-public class MainActivity extends AppCompatActivity implements SongFragment2.OnListFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements SongFragment.OnListFragmentInteractionListener {
 
     ViewPager viewPager;
     PageAdapter pageAdapter;
