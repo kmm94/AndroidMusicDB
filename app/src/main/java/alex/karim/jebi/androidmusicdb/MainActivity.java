@@ -9,8 +9,10 @@ import android.support.v7.widget.Toolbar;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 
+import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements SongFragment.OnListFragmentInteractionListener {
 
     ViewPager viewPager;
     PageAdapter pageAdapter;
@@ -73,5 +75,8 @@ public class MainActivity extends AppCompatActivity {
         */
     }
 
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
+    }
 }
