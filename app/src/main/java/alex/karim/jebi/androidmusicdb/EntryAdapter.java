@@ -13,44 +13,23 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
-        public ViewHolder(View itemView, TextView textView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            mTextView = textView;
+            mTextView = itemView.findViewById(R.id.item_row_text_view);
         }
+
     }
 
     public EntryAdapter(String[] myDataset) {
         mDataset = myDataset;
     }
 
-
-
-    /**
-     * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
-     * an item.
-     * <p>
-     * This new ViewHolder should be constructed with a new View that can represent the items
-     * of the given type. You can either create a new View manually or inflate it from an XML
-     * layout file.
-     * <p>
-     * The new ViewHolder will be used to display items of the adapter using
-     * onBindViewHolder(ViewHolder, int, List). Since it will be re-used to display
-     * different items in the data set, it is a good idea to cache references to sub views of
-     * the View to avoid unnecessary {@link View#findViewById(int)} calls.
-     *
-     * @param parent   The ViewGroup into which the new View will be added after it is bound to
-     *                 an adapter position.
-     * @param viewType The view type of the new View.
-     * @return A new ViewHolder that holds a View of the given view type.
-     * @see #getItemViewType(int)
-     * @see #onBindViewHolder(ViewHolder, int)
-     */
     @Override
     public EntryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View viewGroup = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.my_text_view, parent, false);
-        TextView textViewInViewGroup = viewGroup.findViewById(R.id.item_row_text_view);
-        ViewHolder vh = new ViewHolder(viewGroup, textViewInViewGroup);
+
+        ViewHolder vh = new ViewHolder(viewGroup);
         return vh;
     }
 

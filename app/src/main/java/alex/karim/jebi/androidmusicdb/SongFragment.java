@@ -46,7 +46,6 @@ public class SongFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_song, container, false);
 
-        // BEGIN_INCLUDE(initializeRecyclerView)
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
         // LinearLayoutManager is used here, this will layout the elements in a similar fashion

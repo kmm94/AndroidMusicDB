@@ -6,4 +6,5 @@
     <string name="tab_label1">Songs</string>
     <string name="tab_label2">Artist</string>
     <string name="tab_label3">Albums</string>
+    <string name="element_text">Element</string>
 </resources>
