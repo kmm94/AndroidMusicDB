@@ -23,7 +23,12 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 0:
                 Fragment songFragment = new SongFragment();
                 return songFragment;
-
+            case 1:
+                Fragment albumFragment = new AlbumFragment();
+                return albumFragment;
+            case 2:
+                Fragment artistFragment = new AristFragment();
+                return artistFragment;
             default:
                     Log.i("Position: ", "p: "+ position);
                     return null;
