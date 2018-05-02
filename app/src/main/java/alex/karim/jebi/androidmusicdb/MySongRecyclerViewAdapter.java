@@ -29,7 +29,7 @@ public class MySongRecyclerViewAdapter extends RecyclerView.Adapter<MySongRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_song2, parent, false);
+                .inflate(R.layout.fragment_song, parent, false);
         return new ViewHolder(view);
     }
 

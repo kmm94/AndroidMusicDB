@@ -10,4 +10,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
     tools:context=".SongFragment"
-    tools:listitem="@layout/fragment_song2" />
+    tools:listitem="@layout/fragment_song" />
