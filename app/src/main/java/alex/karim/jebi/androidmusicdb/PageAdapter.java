@@ -21,14 +21,9 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                Fragment songFragment = new Fragment01();
+                Fragment songFragment = new SongFragment();
                 return songFragment;
-            case 1:
-                Fragment artistFragment = new FragmentART();
-                return artistFragment;
-            case 2:
-                Fragment albumFragment = new FragmentSON();
-                return albumFragment;
+
             default:
                     Log.i("Position: ", "p: "+ position);
                     return null;
