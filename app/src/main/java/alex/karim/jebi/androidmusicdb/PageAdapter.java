@@ -21,7 +21,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                Fragment songFragment = new SongFragment();
+                Fragment songFragment = new SongFragment2();
                 return songFragment;
             case 1:
                 Fragment albumFragment = new AlbumFragment();
