@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
             @Override
             public void onSearchAction(String currentQuery) {
                 //Here a search is started when the user press enter
+                //TODO: Perform API call from search string 'currentQuery'.
                 Log.i("Searchinput: ", currentQuery);
             }
         });
