@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
+import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         viewPager = findViewById(R.id.pager);
-
+        mSearchView = findViewById(R.id.floating_search_view);
 
         // Create an instance of the tab layout from the view.
         TabLayout tabLayout = findViewById(R.id.tab_layout);
@@ -61,18 +63,29 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-/*
+
+        mSearchView.setOnSearchListener(new FloatingSearchView.OnSearchListener() {
+            @Override
+            public void onSuggestionClicked(SearchSuggestion searchSuggestion) {
+
+            }
+
+            @Override
+            public void onSearchAction(String currentQuery) {
+                //Here a search is started when the user press enter
+                Log.i("Searchinput: ", currentQuery);
+            }
+        });
+
         mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, final String newQuery) {
 
-                //get suggestions based on newQuery
-
-                //pass them on to the search view
+                Log.i("Searchinput: ", "olds: " + oldQuery +" newS: " + newQuery);
 
             }
         });
-        */
+
     }
 
     @Override
