@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         mSearchView.setOnSearchListener(new FloatingSearchView.OnSearchListener() {
             @Override
             public void onSuggestionClicked(SearchSuggestion searchSuggestion) {
-
+                //TODO: add suggestions and add an action for them here.
             }
 
             @Override
             public void onSearchAction(String currentQuery) {
                 //Here a search is started when the user press enter
-                //TODO: Perform API call from search string 'currentQuery'.
+                //TODO: (jebisan) Perform API call from search string 'currentQuery'.
                 Log.i("Searchinput: ", currentQuery);
             }
         });
@@ -81,9 +81,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, final String newQuery) {
-
-                Log.i("Searchinput: ", "olds: " + oldQuery +" newS: " + newQuery);
-
+                //TODO: make a list from the search query here.
             }
         });
 
