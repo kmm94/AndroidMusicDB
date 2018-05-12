@@ -4,14 +4,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 
-import alex.karim.jebi.androidmusicdb.Domain.Search.SearchSongTitelTask;
+import alex.karim.jebi.androidmusicdb.Domain.Search.SearchSongTask;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 
 
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
     ViewPager viewPager;
     PageAdapter pageAdapter;
     FloatingSearchView mSearchView;
-
+    SearchSongTask searchSongTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageAdapter);
 
+
+        searchSongTask = new SearchSongTask(this);
 
         // Setting a listener for clicks.
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
                 //Here a search is started when the user press enter
                 //TODO: (jebisan) Perform API call from search string 'currentQuery'.
                 Log.i("Searchinput: ", currentQuery);
-                new SearchSongTitelTask().execute();
+                searchSongTask.execute();
 
             }
         });

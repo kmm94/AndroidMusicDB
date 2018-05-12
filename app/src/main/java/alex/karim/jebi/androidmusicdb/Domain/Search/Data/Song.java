@@ -1,4 +1,4 @@
-package alex.karim.jebi.androidmusicdb.Domain.Search;
+package alex.karim.jebi.androidmusicdb.Domain.Search.Data;
 
 public class Song {
     private String name;
