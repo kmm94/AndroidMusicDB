@@ -11,6 +11,7 @@ import android.util.Log;
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 
+import alex.karim.jebi.androidmusicdb.Domain.Search.SearchSongTitelTask;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 
 
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
                 //Here a search is started when the user press enter
                 //TODO: (jebisan) Perform API call from search string 'currentQuery'.
                 Log.i("Searchinput: ", currentQuery);
+                new SearchSongTitelTask().execute();
+
             }
         });
 
