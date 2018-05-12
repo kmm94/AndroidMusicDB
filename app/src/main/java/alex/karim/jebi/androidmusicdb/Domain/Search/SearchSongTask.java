@@ -14,6 +14,13 @@ import alex.karim.jebi.androidmusicdb.MainActivity;
 
 public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
 
+    /*
+    vigtig links:
+    https://www.tutorialspoint.com/android/android_json_parser.htm
+    https://developer.android.com/reference/android/os/AsyncTask
+     */
+
+
     private Context mContext;
     private String TAG = MainActivity.class.getSimpleName();
 
