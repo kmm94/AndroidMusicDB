@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
                 //Here a search is started when the user press enter
                 //TODO: (jebisan) Perform API call from search string 'currentQuery'.
                 Log.i("Searchinput: ", currentQuery);
-                searchSongTask.execute();
+                searchSongTask.execute(currentQuery);
 
             }
         });
