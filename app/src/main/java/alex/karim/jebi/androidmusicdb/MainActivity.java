@@ -11,16 +11,22 @@ import android.util.Log;
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 
+import alex.karim.jebi.androidmusicdb.Domain.Search.SearchAlbumTask;
+import alex.karim.jebi.androidmusicdb.Domain.Search.SearchArtistTask;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchSongTask;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
+import de.umass.lastfm.Caller;
 
 
 public class MainActivity extends AppCompatActivity implements SongFragment.OnListFragmentInteractionListener {
 
+    public static String apiKey = "e3bab7f8adef7e0490d767e0305dd7ce";
     ViewPager viewPager;
     PageAdapter pageAdapter;
     FloatingSearchView mSearchView;
     SearchSongTask searchSongTask;
+    SearchArtistTask searchArtistTask;
+    SearchAlbumTask searchAlbumTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +52,12 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageAdapter);
 
+        //instatiating Api library
+        Caller.getInstance().setUserAgent("Jebi");
 
         searchSongTask = new SearchSongTask(this);
-
+        searchArtistTask = new SearchArtistTask(this);
+        searchAlbumTask = new SearchAlbumTask(this);
         // Setting a listener for clicks.
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -75,9 +84,11 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
             @Override
             public void onSearchAction(String currentQuery) {
                 //Here a search is started when the user press enter
-                //TODO: (jebisan) Perform API call from search string 'currentQuery'.
                 Log.i("Searchinput: ", currentQuery);
                 searchSongTask.execute(currentQuery);
+                searchArtistTask.execute(currentQuery);
+                searchAlbumTask.execute(currentQuery);
+
 
             }
         });

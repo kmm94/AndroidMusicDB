@@ -1,10 +1,34 @@
 package alex.karim.jebi.androidmusicdb.Domain.Search;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
-public class SearchAlbumTask extends AsyncTask {
+import java.util.ArrayList;
+
+import alex.karim.jebi.androidmusicdb.MainActivity;
+import de.umass.lastfm.Album;
+import de.umass.lastfm.Artist;
+
+public class SearchAlbumTask extends AsyncTask<String, Void, ArrayList<Album>> {
+
+    private Context mContext;
+
+    public SearchAlbumTask(Context mContext) {
+        this.mContext = mContext;
+    }
+
     @Override
-    protected Object doInBackground(Object[] objects) {
-        return null;
+    protected ArrayList<Album> doInBackground(String... strings) {
+        ArrayList<Album> albums = new ArrayList<>(Album.search(strings[0], MainActivity.apiKey));
+
+        return albums;
+    }
+
+    @Override
+    protected void onPostExecute(ArrayList<Album> albums) {
+        super.onPostExecute(albums);
+        //TODO: Display albums fra search results
+
     }
 }

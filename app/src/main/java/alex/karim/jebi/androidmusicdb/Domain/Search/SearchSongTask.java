@@ -18,7 +18,7 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     https://www.tutorialspoint.com/android/android_json_parser.htm
     https://developer.android.com/reference/android/os/AsyncTask
      */
-    String apikey = "e3bab7f8adef7e0490d767e0305dd7ce";
+
 
     private Context mContext;
     private String TAG = MainActivity.class.getSimpleName();
@@ -35,12 +35,7 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
 
     @Override
     protected ArrayList<Song> doInBackground(String... strings) {
-        HttpHandler sh = new HttpHandler();
-        String url = "http://ws.audioscrobbler.com/2.0/?method=track.search&track=hot&api_key=e3bab7f8adef7e0490d767e0305dd7ce&format=json";
-        //String jsonStr = sh.makeServiceCall(url);
 
-
-        //Log.e(TAG, "Response from url: " + jsonStr);
         return null;
     }
 
