@@ -3,14 +3,13 @@ package alex.karim.jebi.androidmusicdb.Domain.Search;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
-import android.util.Log;
 
 
 import java.util.ArrayList;
 
-
 import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
 import alex.karim.jebi.androidmusicdb.MainActivity;
+import de.umass.lastfm.Caller;
 
 public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
 
@@ -19,7 +18,7 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     https://www.tutorialspoint.com/android/android_json_parser.htm
     https://developer.android.com/reference/android/os/AsyncTask
      */
-
+    String apikey = "e3bab7f8adef7e0490d767e0305dd7ce";
 
     private Context mContext;
     private String TAG = MainActivity.class.getSimpleName();
@@ -38,9 +37,10 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     protected ArrayList<Song> doInBackground(String... strings) {
         HttpHandler sh = new HttpHandler();
         String url = "http://ws.audioscrobbler.com/2.0/?method=track.search&track=hot&api_key=e3bab7f8adef7e0490d767e0305dd7ce&format=json";
-        String jsonStr = sh.makeServiceCall(url);
+        //String jsonStr = sh.makeServiceCall(url);
 
-        Log.e(TAG, "Response from url: " + jsonStr);
+
+        //Log.e(TAG, "Response from url: " + jsonStr);
         return null;
     }
 
