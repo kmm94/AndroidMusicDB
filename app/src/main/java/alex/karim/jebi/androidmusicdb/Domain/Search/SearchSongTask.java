@@ -43,14 +43,5 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     protected void onPostExecute(ArrayList<Song> songs) {
         super.onPostExecute(songs);
     }
-
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-    }
-
-    @Override
-    protected void onCancelled() {
-        super.onCancelled();
-    }
+    
 }
