@@ -52,12 +52,13 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageAdapter);
 
-        //instatiating Api library
+        //instantiating Api library
         Caller.getInstance().setUserAgent("Jebi");
 
         searchSongTask = new SearchSongTask(this);
         searchArtistTask = new SearchArtistTask(this);
         searchAlbumTask = new SearchAlbumTask(this);
+
         // Setting a listener for clicks.
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         mSearchView.setOnSearchListener(new FloatingSearchView.OnSearchListener() {
             @Override
             public void onSuggestionClicked(SearchSuggestion searchSuggestion) {
-                //TODO: add suggestions and add an action for them here.
+                //TODO: add suggestions and add an action for them here. (out of scope)
             }
 
             @Override
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, final String newQuery) {
-                //TODO: make a list from the search query here.
+                //TODO: make a list from the search query here.(out of scope)
             }
         });
 

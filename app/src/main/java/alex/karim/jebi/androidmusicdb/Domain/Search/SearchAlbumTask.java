@@ -21,14 +21,13 @@ public class SearchAlbumTask extends AsyncTask<String, Void, ArrayList<Album>> {
     @Override
     protected ArrayList<Album> doInBackground(String... strings) {
         ArrayList<Album> albums = new ArrayList<>(Album.search(strings[0], MainActivity.apiKey));
-
         return albums;
     }
 
     @Override
     protected void onPostExecute(ArrayList<Album> albums) {
         super.onPostExecute(albums);
-        //TODO: Display albums fra search results
+        //TODO: Display albums fra search results(Alexander)
 
     }
 }
