@@ -7,6 +7,9 @@ import android.widget.Toast;
 
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
@@ -44,9 +47,20 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
         String jsonStr = sh.makeServiceCall(url);
         Log.i("test", jsonStr);
         JsonParser parser = new JsonParser();
-        parser.parse(jsonStr);
-
-        return null;
+        JsonObject rootObj = parser.parse(jsonStr).getAsJsonObject();
+        JsonObject results = rootObj.getAsJsonObject("results");
+        JsonObject trackmatches = results.getAsJsonObject("trackmatches");
+        JsonArray tracks = trackmatches.getAsJsonArray("track");
+        ArrayList<Song> songs = new ArrayList<Song>();
+        for (JsonElement jsonSong: tracks
+             ) {
+            if (jsonSong.isJsonObject()){
+                JsonObject jsSong = jsonSong.getAsJsonObject();
+                Song song = new Song(jsSong.get("name").getAsString(), jsSong.get("artist").getAsString(), jsSong.get("listeners").getAsInt());
+                songs.add(song);
+            }
+        }
+        return songs;
     }
 
     @Override
