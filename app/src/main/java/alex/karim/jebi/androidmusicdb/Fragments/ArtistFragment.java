@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import alex.karim.jebi.androidmusicdb.R;
-import alex.karim.jebi.androidmusicdb.dummy.AlbumContent;
-import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
-import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
-import de.umass.lastfm.Album;
+import alex.karim.jebi.androidmusicdb.Fragments.dummy.DummyContent;
+import alex.karim.jebi.androidmusicdb.Fragments.dummy.DummyContent.DummyItem;
+
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -22,7 +22,7 @@ import de.umass.lastfm.Album;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class AlbumFragment extends Fragment {
+public class ArtistFragment extends Fragment {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -33,7 +33,7 @@ public class AlbumFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public AlbumFragment() {
+    public ArtistFragment() {
     }
 
     @Override
@@ -45,7 +45,7 @@ public class AlbumFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_albumfragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_artist_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -56,7 +56,7 @@ public class AlbumFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyAlbumFragmentRecyclerViewAdapter(AlbumContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyArtistRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
     }
@@ -72,8 +72,6 @@ public class AlbumFragment extends Fragment {
                     + " must implement OnListFragmentInteractionListener");
         }
     }
-
-
 
     @Override
     public void onDetach() {
@@ -93,6 +91,6 @@ public class AlbumFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Album item);
+        void onListFragmentInteraction(DummyItem item);
     }
 }

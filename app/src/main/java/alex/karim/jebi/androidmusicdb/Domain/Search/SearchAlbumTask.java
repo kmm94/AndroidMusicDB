@@ -28,9 +28,10 @@ public class SearchAlbumTask extends AsyncTask<String, Void, ArrayList<Album>> {
     @Override
     protected void onPostExecute(ArrayList<Album> albums) {
         super.onPostExecute(albums);
-        //TODO: Display albums fra search results(Alexander)
         AlbumContent.ITEMS.clear();
         AlbumContent.addAlbums(albums);
+        //TODO: Notify recycle view somehow to update its list
+
 
     }
 }

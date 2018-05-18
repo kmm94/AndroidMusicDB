@@ -8,6 +8,7 @@ import android.util.Log;
 
 import alex.karim.jebi.androidmusicdb.Fragments.AlbumFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.AristFragment;
+import alex.karim.jebi.androidmusicdb.Fragments.ArtistFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.SongFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
@@ -29,7 +30,7 @@ public class PageAdapter extends FragmentPagerAdapter {
                 Fragment albumFragment = new AlbumFragment();
                 return albumFragment;
             case 2:
-                Fragment artistFragment = new AristFragment();
+                Fragment artistFragment = new ArtistFragment();
                 return artistFragment;
             default:
                     Log.i("Position: ", "p: "+ position);

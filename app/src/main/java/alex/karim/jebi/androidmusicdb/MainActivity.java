@@ -15,13 +15,14 @@ import alex.karim.jebi.androidmusicdb.Domain.Search.SearchAlbumTask;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchArtistTask;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchSongTask;
 import alex.karim.jebi.androidmusicdb.Fragments.AlbumFragment;
+import alex.karim.jebi.androidmusicdb.Fragments.ArtistFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.SongFragment;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 import de.umass.lastfm.Album;
 import de.umass.lastfm.Caller;
 
 
-public class MainActivity extends AppCompatActivity implements SongFragment.OnListFragmentInteractionListener, AlbumFragment.OnListFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements SongFragment.OnListFragmentInteractionListener, AlbumFragment.OnListFragmentInteractionListener, ArtistFragment.OnListFragmentInteractionListener {
 
     public static String apiKey = "e3bab7f8adef7e0490d767e0305dd7ce";
     ViewPager viewPager;
@@ -106,13 +107,30 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
 
     }
 
+    /**
+     * For song fragment interaction.
+     * @param item
+     */
     @Override
     public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
     }
 
+    /**
+     * For album fragment interaction
+     * @param item
+     */
     @Override
     public void onListFragmentInteraction(Album item) {
+        Log.i(String.valueOf(MainActivity.class), "Interacting with: " + item);
+    }
+
+    /**
+     * For artist fragment interaction
+     * @param item
+     */
+    @Override
+    public void onListFragmentInteraction(alex.karim.jebi.androidmusicdb.Fragments.dummy.DummyContent.DummyItem item) {
         Log.i(String.valueOf(MainActivity.class), "Interacting with: " + item);
     }
 }
