@@ -1,4 +1,4 @@
-package alex.karim.jebi.androidmusicdb;
+package alex.karim.jebi.androidmusicdb.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,10 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import alex.karim.jebi.androidmusicdb.R;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
-
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -21,7 +20,7 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class SongFragment extends Fragment {
+public class AlbumFragmentFragment extends Fragment {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -32,7 +31,7 @@ public class SongFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public SongFragment() {
+    public AlbumFragmentFragment() {
     }
 
     @Override
@@ -44,7 +43,7 @@ public class SongFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_song_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_albumfragment_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -55,7 +54,7 @@ public class SongFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MySongRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyAlbumFragmentRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
     }

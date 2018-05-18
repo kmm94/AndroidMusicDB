@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list"
-    android:name="alex.karim.jebi.androidmusicdb.SongFragment2"
+    android:name="alex.karim.jebi.androidmusicdb.AlbumFragmentFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-    tools:context=".Fragments.SongFragment"
-    tools:listitem="@layout/fragment_song" />
+    app:layoutManager="LinearLayoutManager"
+    tools:context=".Fragments.AlbumFragmentFragment"
+    tools:listitem="@layout/fragment_albumfragment" />

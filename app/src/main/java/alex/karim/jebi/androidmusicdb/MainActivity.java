@@ -14,6 +14,7 @@ import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchAlbumTask;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchArtistTask;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchSongTask;
+import alex.karim.jebi.androidmusicdb.Fragments.SongFragment;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 import de.umass.lastfm.Caller;
 

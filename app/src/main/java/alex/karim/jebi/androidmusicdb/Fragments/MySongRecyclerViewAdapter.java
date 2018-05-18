@@ -1,4 +1,4 @@
-package alex.karim.jebi.androidmusicdb;
+package alex.karim.jebi.androidmusicdb.Fragments;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import alex.karim.jebi.androidmusicdb.SongFragment.OnListFragmentInteractionListener;
+import alex.karim.jebi.androidmusicdb.R;
+import alex.karim.jebi.androidmusicdb.Fragments.SongFragment.OnListFragmentInteractionListener;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
 
 import java.util.List;
