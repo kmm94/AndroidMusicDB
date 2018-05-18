@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import alex.karim.jebi.androidmusicdb.R;
+import alex.karim.jebi.androidmusicdb.dummy.AlbumContent;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
 import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
+import de.umass.lastfm.Album;
 
 /**
  * A fragment representing a list of Items.
@@ -20,7 +22,7 @@ import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class AlbumFragmentFragment extends Fragment {
+public class AlbumFragment extends Fragment {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -31,7 +33,7 @@ public class AlbumFragmentFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public AlbumFragmentFragment() {
+    public AlbumFragment() {
     }
 
     @Override
@@ -54,7 +56,7 @@ public class AlbumFragmentFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyAlbumFragmentRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyAlbumFragmentRecyclerViewAdapter(AlbumContent.ITEMS, mListener));
         }
         return view;
     }
@@ -89,6 +91,6 @@ public class AlbumFragmentFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Album item);
     }
 }

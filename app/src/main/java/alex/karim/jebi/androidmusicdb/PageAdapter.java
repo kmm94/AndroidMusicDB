@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
+import alex.karim.jebi.androidmusicdb.Fragments.AlbumFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.AristFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.SongFragment;
 

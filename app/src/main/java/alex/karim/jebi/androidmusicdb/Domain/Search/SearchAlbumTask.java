@@ -7,6 +7,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import alex.karim.jebi.androidmusicdb.MainActivity;
+import alex.karim.jebi.androidmusicdb.dummy.AlbumContent;
 import de.umass.lastfm.Album;
 import de.umass.lastfm.Artist;
 
@@ -28,6 +29,8 @@ public class SearchAlbumTask extends AsyncTask<String, Void, ArrayList<Album>> {
     protected void onPostExecute(ArrayList<Album> albums) {
         super.onPostExecute(albums);
         //TODO: Display albums fra search results(Alexander)
+        AlbumContent.ITEMS.clear();
+        AlbumContent.addAlbums(albums);
 
     }
 }
