@@ -25,7 +25,7 @@
         app:floatingSearch_searchBarMarginRight="4dp"
         app:floatingSearch_searchBarMarginTop="0dp"
         app:floatingSearch_showVoiceInput="true"
-        app:floatingSearch_searchHint="Search..."
+        app:floatingSearch_searchHint="Artist, Song or Album"
         app:floatingSearch_showSearchKey="false"
         app:floatingSearch_suggestionsListAnimDuration="250" />
 
