@@ -56,7 +56,7 @@ public class AlbumFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyAlbumFragmentRecyclerViewAdapter(albumContent.getITEMS(), mListener));
+            recyclerView.setAdapter(new AlbumRecyclerViewAdapter(albumContent.getITEMS(), mListener));
         }
         return view;
     }

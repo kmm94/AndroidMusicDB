@@ -54,7 +54,7 @@ public class SongFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MySongRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new SongRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
     }

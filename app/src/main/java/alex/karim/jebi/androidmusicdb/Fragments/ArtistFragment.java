@@ -56,7 +56,7 @@ public class ArtistFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyArtistRecyclerViewAdapter(artistContent.getITEMS(), mListener));
+            recyclerView.setAdapter(new ArtistRecyclerViewAdapter(artistContent.getITEMS(), mListener));
         }
         return view;
     }

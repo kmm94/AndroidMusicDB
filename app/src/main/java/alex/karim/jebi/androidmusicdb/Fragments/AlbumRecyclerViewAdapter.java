@@ -17,12 +17,12 @@ import de.umass.lastfm.Album;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyAlbumFragmentRecyclerViewAdapter extends RecyclerView.Adapter<MyAlbumFragmentRecyclerViewAdapter.ViewHolder> {
+public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<AlbumRecyclerViewAdapter.ViewHolder> {
 
     private final List<Album> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyAlbumFragmentRecyclerViewAdapter(List<Album> items, OnListFragmentInteractionListener listener) {
+    public AlbumRecyclerViewAdapter(List<Album> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
