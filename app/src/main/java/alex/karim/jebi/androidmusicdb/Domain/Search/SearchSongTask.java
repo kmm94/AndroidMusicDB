@@ -1,10 +1,7 @@
 package alex.karim.jebi.androidmusicdb.Domain.Search;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.arlib.floatingsearchview.FloatingSearchView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -13,7 +10,7 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 
 import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
-import alex.karim.jebi.androidmusicdb.ITaskCompleated;
+import alex.karim.jebi.androidmusicdb.ITaskProcess;
 import alex.karim.jebi.androidmusicdb.IUpdateContent;
 import alex.karim.jebi.androidmusicdb.ListContent.MusicDataContent;
 import alex.karim.jebi.androidmusicdb.MainActivity;
@@ -27,11 +24,11 @@ public class SearchSongTask extends AsyncTask<String, Boolean, ArrayList<Song>> 
      */
 
     private IUpdateContent contentToUpdate;
-    private ITaskCompleated iTaskCompleated;
+    private ITaskProcess iTaskProcess;
 
-    public SearchSongTask(IUpdateContent updatableContent, ITaskCompleated iTaskCompleated) {
+    public SearchSongTask(IUpdateContent updatableContent, ITaskProcess iTaskProcess) {
         contentToUpdate = updatableContent;
-        this.iTaskCompleated = iTaskCompleated;
+        this.iTaskProcess = iTaskProcess;
     }
 
     @Override
@@ -50,7 +47,7 @@ public class SearchSongTask extends AsyncTask<String, Boolean, ArrayList<Song>> 
         JsonObject results = rootObj.getAsJsonObject("results");
         JsonObject trackmatches = results.getAsJsonObject("trackmatches");
         JsonArray tracks = trackmatches.getAsJsonArray("track");
-        ArrayList<Song> songs = new ArrayList<Song>();
+        ArrayList<Song> songs = new ArrayList<>();
         for (JsonElement jsonSong: tracks
              ) {
             if (jsonSong.isJsonObject()){
@@ -67,6 +64,6 @@ public class SearchSongTask extends AsyncTask<String, Boolean, ArrayList<Song>> 
         super.onPostExecute(songs);
         MusicDataContent.getInstance().addSongs(songs);
         contentToUpdate.updateAdapterContent();
-        iTaskCompleated.onTaskCompleted();
+        iTaskProcess.taskCompleted();
     }
 }
