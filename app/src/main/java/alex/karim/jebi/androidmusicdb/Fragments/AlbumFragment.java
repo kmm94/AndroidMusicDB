@@ -58,7 +58,7 @@ public class AlbumFragment extends Fragment implements IUpdateContent {
             } else {
                 albumRecycleView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            albumRecycleView.setAdapter(new MyAlbumFragmentRecyclerViewAdapter(musicDataContent.getAlbums(), mListener));
+            albumRecycleView.setAdapter(new AlbumRecyclerViewAdapter(musicDataContent.getAlbums(), mListener));
         }
         return view;
     }

@@ -58,7 +58,7 @@ public class ArtistFragment extends Fragment implements IUpdateContent {
             } else {
                 artistRecycleView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            artistRecycleView.setAdapter(new MyArtistRecyclerViewAdapter(musicDataContent.getArtists(), mListener));
+            artistRecycleView.setAdapter(new ArtistRecyclerViewAdapter(musicDataContent.getArtists(), mListener));
         }
         return view;
     }

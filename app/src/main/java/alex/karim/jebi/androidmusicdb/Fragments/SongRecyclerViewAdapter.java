@@ -17,12 +17,12 @@ import alex.karim.jebi.androidmusicdb.R;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MySongRecyclerViewAdapter extends RecyclerView.Adapter<MySongRecyclerViewAdapter.ViewHolder> {
+public class SongRecyclerViewAdapter extends RecyclerView.Adapter<SongRecyclerViewAdapter.ViewHolder> {
 
     private final List<Song> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MySongRecyclerViewAdapter(List<Song> items, OnListFragmentInteractionListener listener) {
+    public SongRecyclerViewAdapter(List<Song> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
