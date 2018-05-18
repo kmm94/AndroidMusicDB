@@ -2,8 +2,12 @@ package alex.karim.jebi.androidmusicdb.Domain.Search;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
+
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 
@@ -37,9 +41,11 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     protected ArrayList<Song> doInBackground(String... strings) {
         HttpHandler sh = new HttpHandler();
         String url = "http://ws.audioscrobbler.com/2.0/?method=track.search&track=hot&api_key=e3bab7f8adef7e0490d767e0305dd7ce&format=json";
-        //String jsonStr = sh.makeServiceCall(url);
-        //TODO: search for songs.
-        //Log.e(TAG, "Response from url: " + jsonStr);
+        String jsonStr = sh.makeServiceCall(url);
+        Log.i("test", jsonStr);
+        JsonParser parser = new JsonParser();
+        parser.parse(jsonStr);
+
         return null;
     }
 
