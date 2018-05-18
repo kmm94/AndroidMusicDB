@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
                 Log.i("Searchinput: ", currentQuery);
                 Toast.makeText(mainActivity, "Getting Search result", Toast.LENGTH_LONG).show();
                 mSearchView.showProgress();
-                SearchSongTask searchSongTask = new SearchSongTask((IUpdateContent) pageAdapter.getItem(0), () -> mSearchView.hideProgress());
+                SearchSongTask searchSongTask = new SearchSongTask((IUpdateContent) pageAdapter.getItem(0), () -> mSearchView.hideProgress()); //End process loading cirkel
                 SearchArtistTask searchArtistTask = new SearchArtistTask((IUpdateContent) pageAdapter.getItem(2));
                 SearchAlbumTask searchAlbumTask = new SearchAlbumTask((IUpdateContent) pageAdapter.getItem(1));
                 searchSongTask.execute(currentQuery);
