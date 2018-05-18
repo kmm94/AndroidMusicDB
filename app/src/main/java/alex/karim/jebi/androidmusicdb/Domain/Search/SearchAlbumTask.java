@@ -13,10 +13,10 @@ import de.umass.lastfm.Artist;
 
 public class SearchAlbumTask extends AsyncTask<String, Void, ArrayList<Album>> {
 
-    private Context mContext;
 
-    public SearchAlbumTask(Context mContext) {
-        this.mContext = mContext;
+
+    public SearchAlbumTask() {
+
     }
 
     @Override
@@ -29,8 +29,8 @@ public class SearchAlbumTask extends AsyncTask<String, Void, ArrayList<Album>> {
     protected void onPostExecute(ArrayList<Album> albums) {
         super.onPostExecute(albums);
         //TODO: Display albums fra search results(Alexander)
-        AlbumContent.ITEMS.clear();
-        AlbumContent.addAlbums(albums);
+        //AlbumContent.ITEMS.clear();
+        //AlbumContent.addAlbums(albums);
 
     }
 }

@@ -13,10 +13,7 @@ import de.umass.lastfm.Artist;
 public class SearchArtistTask extends AsyncTask<String, Void, ArrayList<Artist>> {
 
 
-    private Context mContext;
-
-    public SearchArtistTask(Context mContext) {
-        this.mContext = mContext;
+    public SearchArtistTask() {
     }
 
     @Override
