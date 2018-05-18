@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
 import alex.karim.jebi.androidmusicdb.ITaskProcess;
@@ -52,7 +53,12 @@ public class SearchSongTask extends AsyncTask<String, Boolean, ArrayList<Song>> 
              ) {
             if (jsonSong.isJsonObject()){
                 JsonObject jsSong = jsonSong.getAsJsonObject();
-                Song song = new Song(jsSong.get("name").getAsString(), jsSong.get("artist").getAsString(), jsSong.get("listeners").getAsInt());
+                JsonArray images = jsSong.get("image").getAsJsonArray();
+                String mediumImageUrl = images.get(1).getAsJsonObject().get("#text").getAsString();
+                String largeImageUrl = images.get(2).getAsJsonObject().get("#text").getAsString();
+                String extraLargeUrl = images.get(3).getAsJsonObject().get("#text").getAsString();
+
+                Song song = new Song(jsSong.get("name").getAsString(), jsSong.get("artist").getAsString(), jsSong.get("listeners").getAsInt(), mediumImageUrl, largeImageUrl, extraLargeUrl);
                 songs.add(song);
             }
         }
