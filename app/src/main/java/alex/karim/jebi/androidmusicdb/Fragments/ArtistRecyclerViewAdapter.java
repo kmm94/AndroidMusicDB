@@ -8,38 +8,38 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import alex.karim.jebi.androidmusicdb.Fragments.AlbumFragment.OnListFragmentInteractionListener;
+import alex.karim.jebi.androidmusicdb.Fragments.ArtistFragment.OnListFragmentInteractionListener;
 import alex.karim.jebi.androidmusicdb.R;
-import de.umass.lastfm.Album;
+import de.umass.lastfm.Artist;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link Album} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Artist} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyAlbumFragmentRecyclerViewAdapter extends RecyclerView.Adapter<MyAlbumFragmentRecyclerViewAdapter.ViewHolder> {
+public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Album> mValues;
+    private final List<Artist> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyAlbumFragmentRecyclerViewAdapter(List<Album> items, OnListFragmentInteractionListener listener) {
+    public ArtistRecyclerViewAdapter(List<Artist> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_album, parent, false);
+                .inflate(R.layout.fragment_artist, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getArtist()); // artist of album
-        holder.mContentView.setText(mValues.get(position).getName()); //Name of album
+        holder.mIdView.setText(mValues.get(position).getName());
+        holder.mContentView.setText(mValues.get(position).getWikiText());
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,8 +52,6 @@ public class MyAlbumFragmentRecyclerViewAdapter extends RecyclerView.Adapter<MyA
         });
     }
 
-
-
     @Override
     public int getItemCount() {
         return mValues.size();
@@ -63,7 +61,7 @@ public class MyAlbumFragmentRecyclerViewAdapter extends RecyclerView.Adapter<MyA
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public Album mItem;
+        public Artist mItem;
 
         public ViewHolder(View view) {
             super(view);
