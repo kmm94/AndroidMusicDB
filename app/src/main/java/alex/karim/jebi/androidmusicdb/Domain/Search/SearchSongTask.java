@@ -13,11 +13,12 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 
 import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
+import alex.karim.jebi.androidmusicdb.ITaskCompleated;
 import alex.karim.jebi.androidmusicdb.IUpdateContent;
 import alex.karim.jebi.androidmusicdb.ListContent.MusicDataContent;
 import alex.karim.jebi.androidmusicdb.MainActivity;
 
-public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
+public class SearchSongTask extends AsyncTask<String, Boolean, ArrayList<Song>> {
 
     /*
     vigtig links:
@@ -26,10 +27,11 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
      */
 
     private IUpdateContent contentToUpdate;
-    private FloatingSearchView mSearchView;
-    public SearchSongTask(IUpdateContent updatableContent, FloatingSearchView mSearchView) {
+    private ITaskCompleated iTaskCompleated;
+
+    public SearchSongTask(IUpdateContent updatableContent, ITaskCompleated iTaskCompleated) {
         contentToUpdate = updatableContent;
-        this.mSearchView = mSearchView;
+        this.iTaskCompleated = iTaskCompleated;
     }
 
     @Override
@@ -65,7 +67,6 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
         super.onPostExecute(songs);
         MusicDataContent.getInstance().addSongs(songs);
         contentToUpdate.updateAdapterContent();
-        mSearchView.hideProgress();
+        iTaskCompleated.onTaskCompleted();
     }
-
 }

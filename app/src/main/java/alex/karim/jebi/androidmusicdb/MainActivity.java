@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
 
     public static String apiKey = "e3bab7f8adef7e0490d767e0305dd7ce";
     PageAdapter pageAdapter;
+    private FloatingSearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ViewPager viewPager = findViewById(R.id.pager);
-        FloatingSearchView mSearchView = findViewById(R.id.floating_search_view);
+        mSearchView = findViewById(R.id.floating_search_view);
 
 
         // Create an instance of the tab layout from the view.
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         //Handling searchs
         setOnSearchListeners(this, mSearchView);
         }
-
+        
     /**
      * For song fragment interaction.
      * @param song
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
                 Log.i("Searchinput: ", currentQuery);
                 Toast.makeText(mainActivity, "Getting Search result", Toast.LENGTH_LONG).show();
                 mSearchView.showProgress();
-                SearchSongTask searchSongTask = new SearchSongTask((IUpdateContent) pageAdapter.getItem(0), mSearchView);
+                SearchSongTask searchSongTask = new SearchSongTask((IUpdateContent) pageAdapter.getItem(0), () -> mSearchView.hideProgress());
                 SearchArtistTask searchArtistTask = new SearchArtistTask((IUpdateContent) pageAdapter.getItem(2));
                 SearchAlbumTask searchAlbumTask = new SearchAlbumTask((IUpdateContent) pageAdapter.getItem(1));
                 searchSongTask.execute(currentQuery);
@@ -132,5 +133,4 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
             }
         });
     }
-
 }
