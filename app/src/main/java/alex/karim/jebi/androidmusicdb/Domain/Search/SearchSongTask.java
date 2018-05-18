@@ -15,8 +15,9 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 
 import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
+import alex.karim.jebi.androidmusicdb.IUpdateContent;
+import alex.karim.jebi.androidmusicdb.ListContent.MusicDataContent;
 import alex.karim.jebi.androidmusicdb.MainActivity;
-import de.umass.lastfm.Caller;
 
 public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
 
@@ -29,15 +30,20 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
 
     private Context mContext;
     private String TAG = MainActivity.class.getSimpleName();
+    private IUpdateContent contentToUpdate;
 
     public SearchSongTask (Context context){
         mContext = context;
     }
 
+    public SearchSongTask(IUpdateContent updatableContent) {
+        contentToUpdate = updatableContent;
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(mContext, "Getting Search result", Toast.LENGTH_LONG).show(); //TODO: Move to mainActivity
+        //Toast.makeText(mContext, "Getting Search result", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -66,6 +72,8 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     @Override
     protected void onPostExecute(ArrayList<Song> songs) {
         super.onPostExecute(songs);
+        MusicDataContent.getInstance().addSongs(songs);
+        contentToUpdate.updateAdapterContent();
     }
 
 }

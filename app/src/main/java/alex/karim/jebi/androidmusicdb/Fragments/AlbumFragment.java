@@ -10,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import alex.karim.jebi.androidmusicdb.ListContent.AlbumContent;
+import alex.karim.jebi.androidmusicdb.IUpdateContent;
+import alex.karim.jebi.androidmusicdb.ListContent.MusicDataContent;
 import alex.karim.jebi.androidmusicdb.R;
 import de.umass.lastfm.Album;
 
@@ -20,11 +21,12 @@ import de.umass.lastfm.Album;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class AlbumFragment extends Fragment {
+public class AlbumFragment extends Fragment implements IUpdateContent {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private AlbumContent albumContent;
+    private MusicDataContent musicDataContent;
+    private RecyclerView albumRecycleView;
 
     private OnListFragmentInteractionListener mListener;
 
@@ -38,7 +40,7 @@ public class AlbumFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        albumContent = AlbumContent.getInstance();
+        musicDataContent = MusicDataContent.getInstance();
 
     }
 
@@ -50,13 +52,13 @@ public class AlbumFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            albumRecycleView = (RecyclerView) view;
             if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                albumRecycleView.setLayoutManager(new LinearLayoutManager(context));
             } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+                albumRecycleView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new AlbumRecyclerViewAdapter(albumContent.getITEMS(), mListener));
+            albumRecycleView.setAdapter(new AlbumRecyclerViewAdapter(musicDataContent.getAlbums(), mListener));
         }
         return view;
     }
@@ -79,6 +81,13 @@ public class AlbumFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void updateAdapterContent() {
+        if (albumRecycleView != null) {
+            albumRecycleView.getAdapter().notifyDataSetChanged();
+        }
     }
 
     /**

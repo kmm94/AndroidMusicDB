@@ -13,23 +13,26 @@ import alex.karim.jebi.androidmusicdb.Fragments.SongFragment;
 public class PageAdapter extends FragmentPagerAdapter {
 
     private int numOfTabs;
+    private SongFragment songFragment;
+    private ArtistFragment artistFragment;
+    private AlbumFragment albumFragment;
 
     public PageAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
+        albumFragment = new AlbumFragment();
+        songFragment = new SongFragment();
+        artistFragment = new ArtistFragment();
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                Fragment songFragment = new SongFragment();
                 return songFragment;
             case 1:
-                Fragment albumFragment = new AlbumFragment();
                 return albumFragment;
             case 2:
-                Fragment artistFragment = new ArtistFragment();
                 return artistFragment;
             default:
                     Log.i("Position: ", "p: "+ position);
