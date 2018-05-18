@@ -27,15 +27,7 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     https://developer.android.com/reference/android/os/AsyncTask
      */
 
-
-    private Context mContext;
-    private String TAG = MainActivity.class.getSimpleName();
     private IUpdateContent contentToUpdate;
-
-    public SearchSongTask (Context context){
-        mContext = context;
-    }
-
     public SearchSongTask(IUpdateContent updatableContent) {
         contentToUpdate = updatableContent;
     }
@@ -43,7 +35,7 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        //Toast.makeText(mContext, "Getting Search result", Toast.LENGTH_LONG).show();
+        //
     }
 
     @Override
@@ -51,7 +43,6 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
         HttpHandler sh = new HttpHandler();
         String url = "http://ws.audioscrobbler.com/2.0/?method=track.search&track=hot&api_key=e3bab7f8adef7e0490d767e0305dd7ce&format=json";
         String jsonStr = sh.makeServiceCall(url);
-        Log.i("test", jsonStr);
         JsonParser parser = new JsonParser();
         JsonObject rootObj = parser.parse(jsonStr).getAsJsonObject();
         JsonObject results = rootObj.getAsJsonObject("results");
