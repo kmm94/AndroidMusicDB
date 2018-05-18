@@ -1,12 +1,11 @@
 package alex.karim.jebi.androidmusicdb.Domain.Search;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import java.util.ArrayList;
 
+import alex.karim.jebi.androidmusicdb.ListContent.ArtistContent;
 import alex.karim.jebi.androidmusicdb.MainActivity;
-
 import de.umass.lastfm.Artist;
 
 
@@ -25,6 +24,7 @@ public class SearchArtistTask extends AsyncTask<String, Void, ArrayList<Artist>>
     @Override
     protected void onPostExecute(ArrayList<Artist> artists) {
         super.onPostExecute(artists);
+        ArtistContent.getInstance().addArtists(artists);
         //TODO: Display albums fra search results(Alexander)
 
     }

@@ -1,9 +1,7 @@
-package alex.karim.jebi.androidmusicdb.dummy;
+package alex.karim.jebi.androidmusicdb.ListContent;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import de.umass.lastfm.Album;
 
@@ -34,6 +32,7 @@ public class AlbumContent {
         ITEMS.addAll(albumsToAdd);
     }
 
-
-
+    public List<Album> getITEMS() {
+        return ITEMS;
+    }
 }

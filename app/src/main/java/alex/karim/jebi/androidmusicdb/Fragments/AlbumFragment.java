@@ -10,10 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import alex.karim.jebi.androidmusicdb.ListContent.AlbumContent;
 import alex.karim.jebi.androidmusicdb.R;
-import alex.karim.jebi.androidmusicdb.dummy.AlbumContent;
-import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
-import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
 import de.umass.lastfm.Album;
 
 /**
@@ -26,6 +24,7 @@ public class AlbumFragment extends Fragment {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
+    private AlbumContent albumContent;
 
     private OnListFragmentInteractionListener mListener;
 
@@ -39,13 +38,14 @@ public class AlbumFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        albumContent = AlbumContent.getInstance();
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_albumfragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_album_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -56,7 +56,7 @@ public class AlbumFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyAlbumFragmentRecyclerViewAdapter(AlbumContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyAlbumFragmentRecyclerViewAdapter(albumContent.getITEMS(), mListener));
         }
         return view;
     }

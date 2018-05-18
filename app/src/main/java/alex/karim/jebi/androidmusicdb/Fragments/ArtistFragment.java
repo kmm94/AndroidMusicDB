@@ -10,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import alex.karim.jebi.androidmusicdb.ListContent.ArtistContent;
 import alex.karim.jebi.androidmusicdb.R;
-import alex.karim.jebi.androidmusicdb.Fragments.dummy.DummyContent;
-import alex.karim.jebi.androidmusicdb.Fragments.dummy.DummyContent.DummyItem;
-
-import java.util.List;
+import de.umass.lastfm.Artist;
 
 /**
  * A fragment representing a list of Items.
@@ -26,6 +24,7 @@ public class ArtistFragment extends Fragment {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
+    private ArtistContent artistContent;
 
     private OnListFragmentInteractionListener mListener;
 
@@ -39,6 +38,7 @@ public class ArtistFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        artistContent = ArtistContent.getInstance();
 
     }
 
@@ -56,7 +56,7 @@ public class ArtistFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyArtistRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyArtistRecyclerViewAdapter(artistContent.getITEMS(), mListener));
         }
         return view;
     }
@@ -91,6 +91,6 @@ public class ArtistFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Artist item);
     }
 }

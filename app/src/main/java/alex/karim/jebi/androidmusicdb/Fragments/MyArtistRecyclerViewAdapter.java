@@ -6,22 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import alex.karim.jebi.androidmusicdb.Fragments.ArtistFragment.OnListFragmentInteractionListener;
-import alex.karim.jebi.androidmusicdb.Fragments.dummy.DummyContent.DummyItem;
-
 import java.util.List;
 
+import alex.karim.jebi.androidmusicdb.Fragments.ArtistFragment.OnListFragmentInteractionListener;
+import alex.karim.jebi.androidmusicdb.R;
+import de.umass.lastfm.Artist;
+
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Artist} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyArtistRecyclerViewAdapter extends RecyclerView.Adapter<MyArtistRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Artist> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyArtistRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyArtistRecyclerViewAdapter(List<Artist> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,8 +37,8 @@ public class MyArtistRecyclerViewAdapter extends RecyclerView.Adapter<MyArtistRe
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getName());
+        holder.mContentView.setText(mValues.get(position).getWikiText());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,13 +61,13 @@ public class MyArtistRecyclerViewAdapter extends RecyclerView.Adapter<MyArtistRe
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Artist mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = view.findViewById(R.id.item_number);
+            mContentView = view.findViewById(R.id.content);
         }
 
         @Override

@@ -10,10 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import alex.karim.jebi.androidmusicdb.Fragments.MySongRecyclerViewAdapter;
+import alex.karim.jebi.androidmusicdb.ListContent.DummyContent;
+import alex.karim.jebi.androidmusicdb.ListContent.DummyContent.DummyItem;
 import alex.karim.jebi.androidmusicdb.R;
-import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
-import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
 
 /**
  * A fragment representing a list of Items.

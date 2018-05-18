@@ -1,13 +1,12 @@
 package alex.karim.jebi.androidmusicdb;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
@@ -18,8 +17,9 @@ import alex.karim.jebi.androidmusicdb.Domain.Search.SearchSongTask;
 import alex.karim.jebi.androidmusicdb.Fragments.AlbumFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.ArtistFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.SongFragment;
-import alex.karim.jebi.androidmusicdb.dummy.DummyContent;
+import alex.karim.jebi.androidmusicdb.ListContent.DummyContent;
 import de.umass.lastfm.Album;
+import de.umass.lastfm.Artist;
 import de.umass.lastfm.Caller;
 
 
@@ -114,28 +114,28 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
 
     /**
      * For song fragment interaction.
-     * @param item
+     * @param song
      */
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onListFragmentInteraction(DummyContent.DummyItem song) {
 
     }
 
     /**
      * For album fragment interaction
-     * @param item
+     * @param album
      */
     @Override
-    public void onListFragmentInteraction(Album item) {
-        Log.i(String.valueOf(MainActivity.class), "Interacting with: " + item);
+    public void onListFragmentInteraction(Album album) {
+        Log.i(String.valueOf(MainActivity.class), "Interacting with: " + album);
     }
 
     /**
      * For artist fragment interaction
-     * @param item
+     * @param artist
      */
     @Override
-    public void onListFragmentInteraction(alex.karim.jebi.androidmusicdb.Fragments.dummy.DummyContent.DummyItem item) {
-        Log.i(String.valueOf(MainActivity.class), "Interacting with: " + item);
+    public void onListFragmentInteraction(Artist artist) {
+        Log.i(String.valueOf(MainActivity.class), "Interacting with: " + artist);
     }
 }

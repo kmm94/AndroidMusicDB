@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import alex.karim.jebi.androidmusicdb.R;
-import alex.karim.jebi.androidmusicdb.Fragments.SongFragment.OnListFragmentInteractionListener;
-import alex.karim.jebi.androidmusicdb.dummy.DummyContent.DummyItem;
-
 import java.util.List;
+
+import alex.karim.jebi.androidmusicdb.Fragments.SongFragment.OnListFragmentInteractionListener;
+import alex.karim.jebi.androidmusicdb.ListContent.DummyContent.DummyItem;
+import alex.karim.jebi.androidmusicdb.R;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -66,8 +66,8 @@ public class MySongRecyclerViewAdapter extends RecyclerView.Adapter<MySongRecycl
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = view.findViewById(R.id.item_number);
+            mContentView = view.findViewById(R.id.content);
         }
 
         @Override

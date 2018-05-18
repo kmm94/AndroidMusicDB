@@ -1,4 +1,4 @@
-package alex.karim.jebi.androidmusicdb.Fragments.dummy;
+package alex.karim.jebi.androidmusicdb.ListContent;
 
 import java.util.ArrayList;
 import java.util.HashMap;

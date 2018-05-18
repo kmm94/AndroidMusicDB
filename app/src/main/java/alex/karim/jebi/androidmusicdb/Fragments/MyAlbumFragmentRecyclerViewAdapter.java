@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import alex.karim.jebi.androidmusicdb.Fragments.AlbumFragment.OnListFragmentInteractionListener;
 import alex.karim.jebi.androidmusicdb.R;
 import de.umass.lastfm.Album;
-
-import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Album} and makes a call to the
@@ -30,7 +30,7 @@ public class MyAlbumFragmentRecyclerViewAdapter extends RecyclerView.Adapter<MyA
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_albumfragment, parent, false);
+                .inflate(R.layout.fragment_album, parent, false);
         return new ViewHolder(view);
     }
 
@@ -67,8 +67,8 @@ public class MyAlbumFragmentRecyclerViewAdapter extends RecyclerView.Adapter<MyA
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = view.findViewById(R.id.item_number);
+            mContentView = view.findViewById(R.id.content);
         }
 
         @Override
