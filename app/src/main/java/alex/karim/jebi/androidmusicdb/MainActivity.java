@@ -1,5 +1,6 @@
 package alex.karim.jebi.androidmusicdb;
 
+import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
     SearchSongTask searchSongTask;
     SearchArtistTask searchArtistTask;
     SearchAlbumTask searchAlbumTask;
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         setSupportActionBar(toolbar);
         viewPager = findViewById(R.id.pager);
         mSearchView = findViewById(R.id.floating_search_view);
-
+        this.mContext = this;
         // Create an instance of the tab layout from the view.
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         // Set the text for each tab.
@@ -59,9 +62,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         //instantiating Api library
         Caller.getInstance().setUserAgent("Jebi");
 
-        searchSongTask = new SearchSongTask(this);
-        searchArtistTask = new SearchArtistTask(this);
-        searchAlbumTask = new SearchAlbumTask(this);
+
 
         // Setting a listener for clicks.
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -90,6 +91,10 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
             public void onSearchAction(String currentQuery) {
                 //Here a search is started when the user press enter
                 Log.i("Searchinput: ", currentQuery);
+                searchSongTask = new SearchSongTask(mContext);
+                searchArtistTask = new SearchArtistTask();
+                searchAlbumTask = new SearchAlbumTask();
+
                 searchSongTask.execute(currentQuery);
                 searchArtistTask.execute(currentQuery);
                 searchAlbumTask.execute(currentQuery);
