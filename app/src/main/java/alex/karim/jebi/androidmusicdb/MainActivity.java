@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         // Set the text for each tab.
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label1));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label2));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label3));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label2));
 
         // Set the tabs to fill the entire layout.
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
