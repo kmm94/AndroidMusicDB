@@ -30,6 +30,7 @@ public class AlbumContent {
     public void addAlbums(List<Album> albumsToAdd) {
         ITEMS.clear();
         ITEMS.addAll(albumsToAdd);
+
     }
 
     public List<Album> getITEMS() {

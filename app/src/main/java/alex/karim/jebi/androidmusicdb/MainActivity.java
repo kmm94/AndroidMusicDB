@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
     ViewPager viewPager;
     PageAdapter pageAdapter;
     FloatingSearchView mSearchView;
-    SearchSongTask searchSongTask;
-    SearchArtistTask searchArtistTask;
-    SearchAlbumTask searchAlbumTask;
-    private Context mContext;
+    SearchSongTask searchSongTask; //TODO: Remove
+    SearchArtistTask searchArtistTask; //TODO: Remove
+    SearchAlbumTask searchAlbumTask; //TODO: Remove
+    private Context mContext; //TODO: Remove
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

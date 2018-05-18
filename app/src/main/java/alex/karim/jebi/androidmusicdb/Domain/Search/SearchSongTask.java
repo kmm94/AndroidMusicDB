@@ -30,7 +30,7 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(mContext, "Getting Search result", Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext, "Getting Search result", Toast.LENGTH_LONG).show(); //TODO: Move to mainActivity
     }
 
     @Override
