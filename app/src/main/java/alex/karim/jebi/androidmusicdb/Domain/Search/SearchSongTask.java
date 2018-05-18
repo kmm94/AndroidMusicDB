@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.arlib.floatingsearchview.FloatingSearchView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -25,8 +26,10 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
      */
 
     private IUpdateContent contentToUpdate;
-    public SearchSongTask(IUpdateContent updatableContent) {
+    private FloatingSearchView mSearchView;
+    public SearchSongTask(IUpdateContent updatableContent, FloatingSearchView mSearchView) {
         contentToUpdate = updatableContent;
+        this.mSearchView = mSearchView;
     }
 
     @Override
@@ -62,6 +65,7 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
         super.onPostExecute(songs);
         MusicDataContent.getInstance().addSongs(songs);
         contentToUpdate.updateAdapterContent();
+        mSearchView.hideProgress();
     }
 
 }
