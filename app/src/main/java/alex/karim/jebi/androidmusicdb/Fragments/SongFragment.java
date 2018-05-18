@@ -10,8 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import alex.karim.jebi.androidmusicdb.ListContent.DummyContent;
-import alex.karim.jebi.androidmusicdb.ListContent.DummyContent.DummyItem;
+import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
+import alex.karim.jebi.androidmusicdb.IUpdateContent;
+import alex.karim.jebi.androidmusicdb.ListContent.MusicDataContent;
 import alex.karim.jebi.androidmusicdb.R;
 
 /**
@@ -20,12 +21,14 @@ import alex.karim.jebi.androidmusicdb.R;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class SongFragment extends Fragment {
+public class SongFragment extends Fragment implements IUpdateContent {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
     private OnListFragmentInteractionListener mListener;
+    private MusicDataContent musicDataContent;
+    private RecyclerView songsRecycleView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -37,7 +40,7 @@ public class SongFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        musicDataContent = MusicDataContent.getInstance();
     }
 
     @Override
@@ -48,13 +51,13 @@ public class SongFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            songsRecycleView = (RecyclerView) view;
             if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                songsRecycleView.setLayoutManager(new LinearLayoutManager(context));
             } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+                songsRecycleView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MySongRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            songsRecycleView.setAdapter(new MySongRecyclerViewAdapter(musicDataContent.getSongs(), mListener));
         }
         return view;
     }
@@ -77,6 +80,13 @@ public class SongFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void updateAdapterContent() {
+        if (songsRecycleView != null) {
+            songsRecycleView.getAdapter().notifyDataSetChanged();
+        }
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -89,6 +99,6 @@ public class SongFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Song item);
     }
 }

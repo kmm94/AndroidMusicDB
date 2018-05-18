@@ -8,21 +8,21 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
 import alex.karim.jebi.androidmusicdb.Fragments.SongFragment.OnListFragmentInteractionListener;
-import alex.karim.jebi.androidmusicdb.ListContent.DummyContent.DummyItem;
 import alex.karim.jebi.androidmusicdb.R;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Song} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MySongRecyclerViewAdapter extends RecyclerView.Adapter<MySongRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Song> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MySongRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MySongRecyclerViewAdapter(List<Song> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,8 +37,8 @@ public class MySongRecyclerViewAdapter extends RecyclerView.Adapter<MySongRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getName());
+        holder.mContentView.setText(mValues.get(position).getArtist());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +61,7 @@ public class MySongRecyclerViewAdapter extends RecyclerView.Adapter<MySongRecycl
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Song mItem;
 
         public ViewHolder(View view) {
             super(view);

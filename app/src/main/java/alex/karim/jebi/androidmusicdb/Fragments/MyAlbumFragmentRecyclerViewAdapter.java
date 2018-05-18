@@ -27,6 +27,7 @@ public class MyAlbumFragmentRecyclerViewAdapter extends RecyclerView.Adapter<MyA
         mListener = listener;
     }
 
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())

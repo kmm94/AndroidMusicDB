@@ -11,13 +11,13 @@ import android.util.Log;
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 
+import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchAlbumTask;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchArtistTask;
 import alex.karim.jebi.androidmusicdb.Domain.Search.SearchSongTask;
 import alex.karim.jebi.androidmusicdb.Fragments.AlbumFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.ArtistFragment;
 import alex.karim.jebi.androidmusicdb.Fragments.SongFragment;
-import alex.karim.jebi.androidmusicdb.ListContent.DummyContent;
 import de.umass.lastfm.Album;
 import de.umass.lastfm.Artist;
 import de.umass.lastfm.Caller;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
     SearchArtistTask searchArtistTask;
     SearchAlbumTask searchAlbumTask;
     private Context mContext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +63,6 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
         //instantiating Api library
         Caller.getInstance().setUserAgent("Jebi");
 
-
-
         // Setting a listener for clicks.
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -91,10 +90,10 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
             public void onSearchAction(String currentQuery) {
                 //Here a search is started when the user press enter
                 Log.i("Searchinput: ", currentQuery);
-                searchSongTask = new SearchSongTask(mContext);
-                searchArtistTask = new SearchArtistTask();
-                searchAlbumTask = new SearchAlbumTask();
 
+                searchSongTask = new SearchSongTask((IUpdateContent) pageAdapter.getItem(0));
+                searchArtistTask = new SearchArtistTask((IUpdateContent) pageAdapter.getItem(2));
+                searchAlbumTask = new SearchAlbumTask((IUpdateContent) pageAdapter.getItem(1));
                 searchSongTask.execute(currentQuery);
                 searchArtistTask.execute(currentQuery);
                 searchAlbumTask.execute(currentQuery);
@@ -117,8 +116,8 @@ public class MainActivity extends AppCompatActivity implements SongFragment.OnLi
      * @param song
      */
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem song) {
-
+    public void onListFragmentInteraction(Song song) {
+        Log.i(String.valueOf(MainActivity.class), "Interacting with: " + song);
     }
 
     /**

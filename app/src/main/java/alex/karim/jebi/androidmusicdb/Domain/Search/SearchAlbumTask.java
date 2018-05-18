@@ -4,16 +4,17 @@ import android.os.AsyncTask;
 
 import java.util.ArrayList;
 
-import alex.karim.jebi.androidmusicdb.ListContent.AlbumContent;
+import alex.karim.jebi.androidmusicdb.IUpdateContent;
+import alex.karim.jebi.androidmusicdb.ListContent.MusicDataContent;
 import alex.karim.jebi.androidmusicdb.MainActivity;
 import de.umass.lastfm.Album;
 
 public class SearchAlbumTask extends AsyncTask<String, Void, ArrayList<Album>> {
 
+    private IUpdateContent contentToUpdate;
 
-
-    public SearchAlbumTask() {
-
+    public SearchAlbumTask(IUpdateContent updatableContent) {
+        contentToUpdate = updatableContent;
     }
 
     @Override
@@ -25,9 +26,7 @@ public class SearchAlbumTask extends AsyncTask<String, Void, ArrayList<Album>> {
     @Override
     protected void onPostExecute(ArrayList<Album> albums) {
         super.onPostExecute(albums);
-        AlbumContent.getInstance().addAlbums(albums);
-        //TODO: Notify recycle view somehow to update its list
-
-
+        MusicDataContent.getInstance().addAlbums(albums);
+        contentToUpdate.updateAdapterContent();
     }
 }

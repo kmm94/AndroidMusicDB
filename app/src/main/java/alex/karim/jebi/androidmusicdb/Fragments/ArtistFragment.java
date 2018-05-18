@@ -10,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import alex.karim.jebi.androidmusicdb.ListContent.ArtistContent;
+import alex.karim.jebi.androidmusicdb.IUpdateContent;
+import alex.karim.jebi.androidmusicdb.ListContent.MusicDataContent;
 import alex.karim.jebi.androidmusicdb.R;
 import de.umass.lastfm.Artist;
 
@@ -20,11 +21,12 @@ import de.umass.lastfm.Artist;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ArtistFragment extends Fragment {
+public class ArtistFragment extends Fragment implements IUpdateContent {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private ArtistContent artistContent;
+    private MusicDataContent musicDataContent;
+    private RecyclerView artistRecycleView;
 
     private OnListFragmentInteractionListener mListener;
 
@@ -38,7 +40,7 @@ public class ArtistFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        artistContent = ArtistContent.getInstance();
+        musicDataContent = MusicDataContent.getInstance();
 
     }
 
@@ -50,13 +52,13 @@ public class ArtistFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            artistRecycleView = (RecyclerView) view;
             if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                artistRecycleView.setLayoutManager(new LinearLayoutManager(context));
             } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+                artistRecycleView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyArtistRecyclerViewAdapter(artistContent.getITEMS(), mListener));
+            artistRecycleView.setAdapter(new MyArtistRecyclerViewAdapter(musicDataContent.getArtists(), mListener));
         }
         return view;
     }
@@ -77,6 +79,13 @@ public class ArtistFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void updateAdapterContent() {
+        if (artistRecycleView != null) {
+            artistRecycleView.getAdapter().notifyDataSetChanged();
+        }
     }
 
     /**

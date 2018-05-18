@@ -2,14 +2,13 @@ package alex.karim.jebi.androidmusicdb.Domain.Search;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
-
 
 import java.util.ArrayList;
 
 import alex.karim.jebi.androidmusicdb.Domain.Search.Data.Song;
+import alex.karim.jebi.androidmusicdb.IUpdateContent;
+import alex.karim.jebi.androidmusicdb.ListContent.MusicDataContent;
 import alex.karim.jebi.androidmusicdb.MainActivity;
-import de.umass.lastfm.Caller;
 
 public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
 
@@ -22,30 +21,38 @@ public class SearchSongTask extends AsyncTask<String, Void, ArrayList<Song>> {
 
     private Context mContext;
     private String TAG = MainActivity.class.getSimpleName();
+    private IUpdateContent contentToUpdate;
 
     public SearchSongTask (Context context){
         mContext = context;
     }
 
+    public SearchSongTask(IUpdateContent updatableContent) {
+        contentToUpdate = updatableContent;
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(mContext, "Getting Search result", Toast.LENGTH_LONG).show();
+        //Toast.makeText(mContext, "Getting Search result", Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected ArrayList<Song> doInBackground(String... strings) {
-        HttpHandler sh = new HttpHandler();
+/*        HttpHandler sh = new HttpHandler();
         String url = "http://ws.audioscrobbler.com/2.0/?method=track.search&track=hot&api_key=e3bab7f8adef7e0490d767e0305dd7ce&format=json";
         //String jsonStr = sh.makeServiceCall(url);
         //TODO: search for songs.
         //Log.e(TAG, "Response from url: " + jsonStr);
-        return null;
+        return null;*/
+        return new ArrayList<Song>();
     }
 
     @Override
     protected void onPostExecute(ArrayList<Song> songs) {
         super.onPostExecute(songs);
+        MusicDataContent.getInstance().addSongs(songs);
+        contentToUpdate.updateAdapterContent();
     }
 
 }
