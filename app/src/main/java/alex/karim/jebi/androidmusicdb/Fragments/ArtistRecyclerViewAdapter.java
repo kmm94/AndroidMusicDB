@@ -1,5 +1,6 @@
 package alex.karim.jebi.androidmusicdb.Fragments;
 
+import android.icu.text.NumberFormat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
     private final List<Artist> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public ArtistRecyclerViewAdapter(List<Artist> items, OnListFragmentInteractionListener listener) {
+    ArtistRecyclerViewAdapter(List<Artist> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,17 +38,14 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getName());
-        holder.mContentView.setText(mValues.get(position).getWikiText());
+        holder.artistName.setText(mValues.get(position).getName());
+        holder.numberOfListeners.setText(java.text.NumberFormat.getInstance().format(mValues.get(position).getListeners()));
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+        holder.mView.setOnClickListener(v -> {
+            if (null != mListener) {
+                // Notify the active callbacks interface (the activity, if the
+                // fragment is attached to one) that an item has been selected.
+                mListener.onListFragmentInteraction(holder.mItem);
             }
         });
     }
@@ -58,21 +56,21 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public Artist mItem;
+        final View mView;
+        final TextView artistName;
+        final TextView numberOfListeners;
+        Artist mItem;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = view.findViewById(R.id.item_number);
-            mContentView = view.findViewById(R.id.content);
+            artistName = view.findViewById(R.id.artistFragmentNameTextView);
+            numberOfListeners = view.findViewById(R.id.listenersTextView);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + numberOfListeners.getText() + "'";
         }
     }
 }

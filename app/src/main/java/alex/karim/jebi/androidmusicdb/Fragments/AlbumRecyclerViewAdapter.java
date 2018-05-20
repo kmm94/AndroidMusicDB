@@ -1,16 +1,22 @@
 package alex.karim.jebi.androidmusicdb.Fragments;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import alex.karim.jebi.androidmusicdb.Fragments.AlbumFragment.OnListFragmentInteractionListener;
 import alex.karim.jebi.androidmusicdb.R;
 import de.umass.lastfm.Album;
+import de.umass.lastfm.ImageHolder;
+import de.umass.lastfm.ImageSize;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Album} and makes a call to the
@@ -38,8 +44,12 @@ public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<AlbumRecycler
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getArtist()); // artist of album
-        holder.mContentView.setText(mValues.get(position).getName()); //Name of album
+        holder.albumName.setText(mValues.get(position).getName()); // artist of album
+        holder.artistName.setText(mValues.get(position).getArtist()); //Name of album
+        String albumCoverUrl = mValues.get(position).getImageURL(ImageSize.MEDIUM);
+        if(albumCoverUrl != null && !albumCoverUrl.isEmpty()) {
+            Picasso.with(holder.itemView.getContext()).load(mValues.get(position).getImageURL(ImageSize.LARGE)).into(holder.albumCover);
+        }
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,20 +71,22 @@ public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<AlbumRecycler
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView albumName;
+        public final TextView artistName;
+        public final ImageView albumCover;
         public Album mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = view.findViewById(R.id.item_number);
-            mContentView = view.findViewById(R.id.content);
+            albumName = view.findViewById(R.id.albumNameTextView);
+            artistName = view.findViewById(R.id.artistNameTextView);
+            albumCover = view.findViewById(R.id.albumCover);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + artistName.getText() + "'";
         }
     }
 }
